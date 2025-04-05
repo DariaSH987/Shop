@@ -1,0 +1,1 @@
+C:\Users\admin\source\repos\MauiApp13\MauiApp13.csproj;x64

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp13.MainPage">
+    <Grid>
+        <VerticalStackLayout VerticalOptions="Start"
+                             Margin="0,50,0,0">
+            <Label Text="Выберите товар"
+                   FontSize="24"
+                   HorizontalOptions="Center"/>
+
+            <CollectionView ItemsSource="{Binding Products}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding Name}"
+                                   FontSize="18"/>
+                            <Label Text="{Binding Price, StringFormat='{0:C}'}"
+                                   FontSize="16"/>
+                            <Entry Placeholder="Количество"
+                                   Keyboard="Numeric"
+                                   Text="{Binding Quantity, Mode=TwoWay}"/>
+                            <Button Text="Добавить в корзину"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddToCartCommand}"
+                                    CommandParameter="{Binding}"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Перейти в корзину"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToCartCommand}"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
